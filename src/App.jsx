@@ -1,13 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Resize from './pages/Resize';
-import Loading from './pages/Loading';
-import LocationAnalysis from './pages/LocationAnalysis';
-import Collage from './pages/Collage';
-import Feedback from './pages/Feedback';
+import Header from './client/components/Header';
+import Footer from './client/components/Footer';
+import Home from './client/pages/Home';
+import Resize from './client/pages/Resize';
+import Loading from './client/pages/Loading';
+import LocationAnalysis from './client/pages/LocationAnalysis';
+import Collage from './client/pages/Collage';
+import Feedback from './client/pages/Feedback';
 
 const App = () => {
   return (
