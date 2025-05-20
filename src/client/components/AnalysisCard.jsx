@@ -1,16 +1,16 @@
 // AnalysisCard.jsx
 
 import React from 'react';
-import './AnalysisCard.css'; // 스타일 따로 만들기
+import './AnalysisCard.css';
 
-export default function AnalysisCard({ result }) {
-  const [title, ...descLines] = result.split('\n');
-  const desc = descLines.join('\n');
-
+function AnalysisCard({ title, description }) {
   return (
-    <div className="analysis-card">
-      <h2>{title.trim()}</h2>
-      <p>{desc.trim()}</p>
+    <div className="result-card">
+      <div className="result-heading">✨당신의 여행 사진 속엔 어떤 성격이 숨어있을까요?</div>
+      <div className="result-description">{description}</div>
+      <div className="result-title">{title}</div>
     </div>
   );
 }
+
+export default AnalysisCard;
