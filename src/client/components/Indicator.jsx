@@ -1,5 +1,5 @@
 import React from 'react';
-import './Indicator.css';
+import '../styles/Indicator.css';
 
 const Indicator = ({ total = 2, current = 0 }) => {
   return (
