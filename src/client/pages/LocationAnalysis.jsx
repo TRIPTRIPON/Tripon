@@ -110,7 +110,7 @@ const LocationAnalysis = ({ imageUrl }) => {
         style={styles.primaryButton}
         onClick={handleCorrect}
       >
-        맞췄어요!
+        맞췄어요!!
       </button>
       
       <button 
