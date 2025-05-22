@@ -8,8 +8,12 @@
 }
 
 .logo {
-  width: 120px;
-  margin-bottom: 16px;
+  width: 200px;
+  margin-bottom: 12px;
+}
+
+.download {
+  width: 30px;
 }
 
 .kakao {
@@ -29,6 +33,15 @@
     align-items: center;
 }
 
+.collage-controls button {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
 .indicator-dots {
   display: flex;
   justify-content: center;
@@ -44,4 +57,8 @@
 
 .dot.active {
   background-color: #fff;
+}
+
+.collage-wrapper {
+  background-color: rgb(3, 155, 229);
 }
