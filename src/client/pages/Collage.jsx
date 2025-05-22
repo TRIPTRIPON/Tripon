@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CollageGrid from '../components/CollageGrid';
+import '../styles/Collage.css';
 import Indicator from '../components/Indicator';
 import html2canvas from 'html2canvas';
 
@@ -37,15 +38,19 @@ const Collage = () => {
 
   return (
     <div className="collage-container">
-      <img src="/logo.png" alt="logo" className="logo" />
+      <img src="/asset/icon_width.png" alt="logo" className="logo" />
       <div className="collage-wrapper">
         <CollageGrid page={page} />
         <Indicator total={totalPages} current={page} />
       </div>
       <div className="collage-controls">
         <button onClick={handleSave}>⬇️</button>
-        <button>📸</button>
-        <button>😊</button>
+        <button>
+          <img src="/asset/kakao.png" alt="kakao" className='kakao' />
+        </button>
+        <button>
+          <img src="/asset/instagram.png" alt="instagram" className='instagram' />
+        </button>
       </div>
     </div>
   );
