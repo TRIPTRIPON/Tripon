@@ -1,14 +1,27 @@
 .collage-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 40px 16px;
   background-color: #fefefe;
 }
 
 .logo {
-  height: 32px;
-  margin-bottom: 16px;
+  width: 200px;
+  margin-bottom: 12px;
+}
+
+.download {
+  width: 30px;
+}
+
+.kakao {
+  width: 30px;
+}
+
+.instagram {
+  width: 30px;
 }
 
 .collage-controls {
@@ -18,6 +31,15 @@
     margin-top: 24px;
     font-size: 24px;
     align-items: center;
+}
+
+.collage-controls button {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0 8px;
+  cursor: pointer;
 }
 
 .indicator-dots {
@@ -35,4 +57,8 @@
 
 .dot.active {
   background-color: #fff;
+}
+
+.collage-wrapper {
+  background-color: rgb(3, 155, 229);
 }

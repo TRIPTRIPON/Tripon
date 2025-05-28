@@ -2,10 +2,10 @@ import React from 'react';
 import '../styles/CollageGrid.css';
 
 const sampleImages = [
-  '000',
-  '001',
-  '002',
-  '003',
+  '/asset/000.png',
+  '/asset/001.png',
+  '/asset/002.png',
+  '/asset/003.png',
 ];
 
 const CollageGrid = ({ images = sampleImages }) => {
