@@ -23,6 +23,11 @@ const TripOnPage = () => {
       marginBottom: '2rem',
       width: '100%'
     },
+    logo: {
+      width: '150px',
+      height: 'auto',
+      marginBottom: '1rem'
+    },
     titleHighlight: {
       color: '#888',
       fontSize: '1.1rem',
