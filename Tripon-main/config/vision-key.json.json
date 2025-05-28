@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "snappy-lattice-461207-f6",
+  "private_key_id": "4eb210e1c909ab1ec419feb13716f1631c0f87ea",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC50nB61ZYEaOOM\n8X8ha+KhRXGJXTGCR8ki/AW52r+Bhf/LpGNlRp9t/ixAVEOqRIAIzI3lKGHk6Agg\noePh+pxpzFJGPoVEQuFwe1szLzAC/i60fMpC+ZNN1XJq7SorM0pOhh3rg/5iirJC\n1g+BCJ94lV4a7cYxNnr7Mvw4HpMwICjyKrYpW+KesE15r8VP1oc5B7Oz5hIY/RSY\ne1zhajLmfT/BXX6AWTJgAAT/6jcobg3MwbE4/Th90OkLmb/id2S6SVH7k44cZvJu\njR/q/tYvu5s3gTtiMDOj8w4g4KscXriu7daiPdKaRkhltoF1y7+vruHwucajzdCd\nFjKkpCMHAgMBAAECggEADa5Bm7mH3vE99418F6DSwZ7UOhHDaF0SoOG/JizFtqp/\n56VFsBof+MAiz+WkSa/bYUp2E+4CLxEqMATbOzLxOxTQ5d0KgLkP0fEzCLSrqzy9\ngYpCdeXcA3n4f4jQdvfCu79CCqngG68saqFJ6O0SmJUepYrl8Y+aRE4/pX4SxhMn\n5pRTXKrkT56rDnQp58Ij/ZZDLGWyUSz/vArnMEzR7Ejp23dvka9h8AUgs3wij/yJ\nkQk/WxHLXBBTaG6Nm809QPW228K1Ef0pWLwWCf/fJk3Db35ZwAhFEwPaazkTXd6m\nr8gubAWRZvFI48TWwXW0MRAfuVDxN4/G4C3ejq52cQKBgQDmbEX1Cyq4hro2EsmR\nGuRyr2Zo0R4k4rakOVw6Wrp6bOVBqJX8oWzGR+/RnnGO1jJP8UHdLlt2O+3guAkU\nO1L7R8LYr0Oc5slfcONakRzxQf3bHAMC95SPawMBbbKP4wwzWhLmqAAcjG8bUhQ2\nuTp9qtE/FV5jcaZ3ScDcEFIvzwKBgQDOcsfykUJbJOiGp+94SHfZqKesDSCZmdir\nNaZ4kuOZOAYhn/P3mQzOmXdAjzcTmJTmrk38qpc7E19fgw2eGsLxeZVkeXygDGDA\nyNk3QorEShCjp7vpqNe/2ZkeheVwpgkB4uVTZUHu53GiRtktl6sdeaChxbo5oCQk\nbhZtNJqvSQKBgQCnhepqmF7L32+8ZnZTX8jdNHZxGDAhQw7kYKuT5WiUH12iGc5J\n6JarpZtOvDH1VfcoNc/b3ZszX6i3azV2lxbih666WNoAVa3sDKfOrZfsMz07sqbh\n3lwM1RFPVZCvmbPCFeeN+HB0UQlqRIdbrdk/ihQtF/0SsYsESQPFOrx18wKBgHoI\n95C3tRXTl3AhzTi4/b+4JoVZrS+e9akfKayUh92GdHlj5/8whZWKuid7gP8gbsR9\nvLPi00qkhPgcq+wNvbaoPFsMRVMGfhr3nw8/Um/9qCBVgor4t7A8nHqig6I3Q5PN\n3+mQLY1fWpimcLK2uPvPbdiy3QY7V6IBQViEg/uhAoGBAI9HyO8ViYdZRwRIsh15\nuJK3+kqANCEab4YgCV6SKT2RFRm1LLwVt2qWloe4E/D93N2/22sHqX5sPqnX3Vbw\nr9TDnRk3Zguu+FI5NqN7KkflbsV9VvQftjIaGf8TPeUzWv1aE0cniJp4zECltyP/\nBQ4SD31pUnlGTYLiSb0MNYCY\n-----END PRIVATE KEY-----\n",
+  "client_email": "tripon-vision@snappy-lattice-461207-f6.iam.gserviceaccount.com",
+  "client_id": "107531655791636437073",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tripon-vision%40snappy-lattice-461207-f6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
