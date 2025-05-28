@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ImageCountModal from './modal';
 
 const LocationAnalysis = ({ analysisResult, onBack }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const styles = {
     container: {
@@ -104,11 +107,11 @@ const LocationAnalysis = ({ analysisResult, onBack }) => {
   };
 
   const handleCorrect = () => {
-    //navigate('/feedback', { state: { isCorrect: true } }); 사용
+    setShowModal(true);
   };
 
   const handleIncorrect = () => {
-    //navigate('/feedback', { state: { isCorrect: false } }); 사용
+    navigate('/feedback', { state: { isCorrect: false } });
   };
 
   // 예외 처리: analysisResult가 없는 경우
@@ -141,6 +144,7 @@ const LocationAnalysis = ({ analysisResult, onBack }) => {
   
   return (
     <div style={styles.container}>
+      {showModal && <ImageCountModal onClose={() => setShowModal(false)} />}
       
       <div style={styles.imageCard}>
         <img 
