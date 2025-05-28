@@ -1,19 +1,15 @@
 ## 🚀 프로젝트 소개
 
-Trip:On은 사용자가 여행 사진을 업로드하면 AI가 사진 속 장소를 예측하고, 그 경험을 바탕으로 나만의 여행 캐릭터를 해석해 제공하는 서비스입니다. 이 MVP 버전은 **React**, **OpenAI API**를 중심으로 빠르게 구현되며, 백·프론트 통합 단일 애플리케이션으로 Docker 배포됩니다.
+Trip:On은 사용자가 여행 사진을 업로드하면 AI가 사진 속 장소를 예측하고, 그 경험을 바탕으로 나만의 여행 캐릭터를 해석해 제공하는 서비스입니다. 이 MVP 버전은 **React**와 **OpenAI API**를 중심으로 구현된 모노리식 애플리케이션입니다.
 
 ---
 
 ## ⚙️ 기술 스택
 
 * **프론트엔드**: React (JSX, CRA), CSS
-* **백엔드**: Node.js, Express (예정)
-* **AI 서비스**: OpenAI API (텍스트 분석), 자체 Vision 모델 (장소 예측)
-* **이미지 처리**: Sharp (서버), HTML5 Canvas (클라이언트)
-* **데이터베이스**: MongoDB (예정)
-* **컨테이너**: Docker (예정)
+* **AI 서비스**: OpenAI API (텍스트 분석)
+* **이미지 처리**: HTML5 Canvas (클라이언트)
 * **테스트**: Jest, React Testing Library
-* **CI/CD**: GitHub Actions (예정)
 * **공통**: JavaScript, ESLint, Prettier
 
 ---
@@ -66,12 +62,18 @@ tripon/
     npm install
     ```
 
-3. 개발 서버 실행
+3. 환경 변수 설정
+    ```bash
+    # .env 파일 생성
+    REACT_APP_OPENAI_API_KEY=your_api_key_here
+    ```
+
+4. 개발 서버 실행
     ```bash
     npm start
     ```
 
-4. 테스트 실행
+5. 테스트 실행
     ```bash
     npm test
     ```
@@ -130,68 +132,22 @@ ex) Feat: 로딩 페이지 추가
 
 ---
 
-## 📊 주요 기능 구현 계획
+## 📊 주요 기능
 
 1. **사진 업로드 및 크롭**
    - 모바일 친화적인 이미지 업로드
    - 4:3 비율 크롭 인터페이스
    - 이미지 최적화
 
-2. **장소 예측**
-   - Vision 모델을 활용한 장소 예측
-   - 신뢰도 점수와 함께 최상위 3개 장소 후보 제공
-   - 사용자 피드백 수집
-
-3. **여행 캐릭터 분석**
+2. **여행 캐릭터 분석**
    - OpenAI API를 활용한 캐릭터 분석 생성
    - 분석 결과에 따른 맞춤형 아이콘/일러스트 제공
    - 다양한 성격 유형에 따른 여행 스타일 제안
 
-4. **네컷 콜라주**
+3. **네컷 콜라주**
    - 커스터마이즈 가능한 네컷 템플릿
    - 분석 결과와 사진을 조합한 공유용 이미지 생성
    - 소셜 미디어 공유 기능
-
-5. **사용자 피드백**
-   - 예측 정확도에 대한 피드백 수집
-   - 서비스 만족도 평가
-   - 익명화된 분석 데이터 저장
-
----
-
-## 🛠️ API 엔드포인트 (예정)
-
-| 경로 | 메서드 | 설명 | 요청 데이터 | 응답 데이터 |
-| --- | --- | --- | --- | --- |
-| `/api/analyze` | POST | 이미지 분석 | `{ image: File }` | `{ place, analysisText, sessionId }` |
-| `/api/feedback` | POST | 피드백 제출 | `{ isCorrect, sessionId, comments? }` | `{ success: Boolean }` |
-| `/api/share` | GET | 공유 URL 생성 | `{ sessionId }` | `{ shareUrl }` |
-
----
-
-## 🔐 환경 변수 (예정)
-
-`.env` 파일에 다음 환경 변수를 설정하세요:
-
-```
-# 서버 설정
-PORT=3000
-NODE_ENV=development
-
-# 데이터베이스
-MONGODB_URI=mongodb://localhost:27017/tripon
-
-# OpenAI API
-OPENAI_API_KEY=sk-xxxxx
-OPENAI_MODEL=gpt-4-1106-preview
-
-# 자체 Vision 모델
-VISION_MODEL_PATH=/path/to/model
-VISION_MODEL_THRESHOLD=0.7
-
-# 보안
-JWT_SECRET=your_jwt_secret_key
-```
 
 ---
 
@@ -201,9 +157,6 @@ JWT_SECRET=your_jwt_secret_key
    - React 컴포넌트 테스트 (React Testing Library)
    - 유틸리티 함수 테스트 (Jest)
 
-2. **통합 테스트** (예정):
-   - API 엔드포인트 테스트
+2. **통합 테스트**:
+   - API 호출 테스트
    - 사용자 흐름 테스트
-
-3. **E2E 테스트** (예정):
-   - 주요 사용자 시나리오 테스트 (Cypress)

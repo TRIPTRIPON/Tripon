@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ImageCountModal from './modal';
 
 const LocationAnalysis = ({ analysisResult, onBack }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const styles = {
     container: {
@@ -46,18 +49,24 @@ const LocationAnalysis = ({ analysisResult, onBack }) => {
       width: '100%'
     },
     smallText: {
-      fontSize: '0.9rem',
+      fontSize: '1.2rem',
       color: '#666',
-      marginBottom: '0.5rem'
+      marginBottom: '0.3rem'
     },
     locationText: {
-      fontSize: '1.3rem',
-      fontWeight: 'bold',
-      color: '#333'
+      fontSize: '1.1rem',
+      color: '#333',
+      marginTop: '0.2rem',
+      '& span': {
+        color: '#40E0D0',
+        fontWeight: 'bold',
+        fontSize: '1.3rem'
+      }
     },
     highlightText: {
-      color: '#000',
-      fontWeight: 'bold'
+      color: '#40E0D0',
+      fontWeight: 'bold',
+      fontSize: '1.2rem'
     },
     confidenceText: {
       fontSize: '0.8rem',
@@ -98,11 +107,11 @@ const LocationAnalysis = ({ analysisResult, onBack }) => {
   };
 
   const handleCorrect = () => {
-    //navigate('/feedback', { state: { isCorrect: true } }); 사용
+    setShowModal(true);
   };
 
   const handleIncorrect = () => {
-    //navigate('/feedback', { state: { isCorrect: false } }); 사용
+    navigate('/feedback', { state: { isCorrect: false } });
   };
 
   // 예외 처리: analysisResult가 없는 경우
@@ -135,6 +144,7 @@ const LocationAnalysis = ({ analysisResult, onBack }) => {
   
   return (
     <div style={styles.container}>
+      {showModal && <ImageCountModal onClose={() => setShowModal(false)} />}
       
       <div style={styles.imageCard}>
         <img 
@@ -149,10 +159,10 @@ const LocationAnalysis = ({ analysisResult, onBack }) => {
       
       <div style={styles.resultText}>
         <p style={styles.smallText}>
-          이 나라는 <span style={styles.highlightText}>{analysisResult.country}</span> 입니다.
+          이 나라는 <span style={styles.highlightText}>{analysisResult.country}</span>입니다.
         </p>
         <p style={styles.locationText}>
-          그 중에서도 {analysisResult.city} 같아요!
+          <span>{analysisResult.city}</span> 같아요!
         </p>
         {analysisResult.confidence && (
           <p style={styles.confidenceText}>
