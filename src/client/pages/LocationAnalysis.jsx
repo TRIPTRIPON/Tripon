@@ -1,8 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const LocationAnalysis = ({ imageUrl }) => {
-  const navigate = useNavigate();
+const LocationAnalysis = ({ analysisResult, onBack }) => {
+  // const navigate = useNavigate();
 
   const styles = {
     container: {
@@ -11,10 +10,19 @@ const LocationAnalysis = ({ imageUrl }) => {
       alignItems: 'center',
       padding: '1.5rem',
       maxWidth: '450px',
-      margin: '0 auto',
+      margin: '2px auto',
       height: '100vh',
       fontFamily: '"Noto Sans KR", sans-serif',
       backgroundColor: '#ffffff'
+    },
+    backButton: {
+      alignSelf: 'flex-start',
+      backgroundColor: 'transparent',
+      border: 'none',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+      marginBottom: '1rem',
+      color: '#666'
     },
     imageCard: {
       width: '100%',
@@ -51,6 +59,12 @@ const LocationAnalysis = ({ imageUrl }) => {
       color: '#000',
       fontWeight: 'bold'
     },
+    confidenceText: {
+      fontSize: '0.8rem',
+      color: '#999',
+      marginTop: '0.5rem',
+      fontStyle: 'italic'
+    },
     primaryButton: {
       width: '100%',
       backgroundColor: '#03A9F4',
@@ -75,42 +89,83 @@ const LocationAnalysis = ({ imageUrl }) => {
       fontWeight: '500',
       cursor: 'pointer',
       textAlign: 'center'
+    },
+    errorContainer: {
+      textAlign: 'center',
+      padding: '2rem',
+      color: '#666'
     }
   };
 
   const handleCorrect = () => {
-    navigate('/feedback', { state: { isCorrect: true } });
+    //navigate('/feedback', { state: { isCorrect: true } }); 사용
   };
 
   const handleIncorrect = () => {
-    navigate('/feedback', { state: { isCorrect: false } });
+    //navigate('/feedback', { state: { isCorrect: false } }); 사용
   };
+
+  // 예외 처리: analysisResult가 없는 경우
+  if (!analysisResult) {
+    return (
+      <div style={styles.container}>
+        <div style={styles.errorContainer}>
+          <p>분석 결과를 불러올 수 없습니다.</p>
+          <button style={styles.primaryButton} onClick={onBack}>
+            다시 시도하기
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // 예외 처리: 이미지 URL이 없는 경우
+  if (!analysisResult.imageUrl) {
+    return (
+      <div style={styles.container}>
+        <div style={styles.errorContainer}>
+          <p>이미지를 불러올 수 없습니다.</p>
+          <button style={styles.primaryButton} onClick={onBack}>
+            다시 시도하기
+          </button>
+        </div>
+      </div>
+    );
+  }
   
   return (
     <div style={styles.container}>
+      
       <div style={styles.imageCard}>
-        {imageUrl && (
-          <img 
-            src={imageUrl} 
-            alt="여행 사진" 
-            style={styles.image}
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
-          />
-        )}
+        <img 
+          src={analysisResult.imageUrl} 
+          alt="여행 사진" 
+          style={styles.image}
+          onError={(e) => {
+            e.target.style.display = 'none';
+          }}
+        />
       </div>
       
       <div style={styles.resultText}>
-        <p style={styles.smallText}>이 나라는 <span style={styles.highlightText}>대한민국</span> 입니다.</p>
-        <p style={styles.locationText}>그 중에서도 제주도 같아요!</p>
+        <p style={styles.smallText}>
+          이 나라는 <span style={styles.highlightText}>{analysisResult.country}</span> 입니다.
+        </p>
+        <p style={styles.locationText}>
+          그 중에서도 {analysisResult.city} 같아요!
+        </p>
+        {analysisResult.confidence && (
+          <p style={styles.confidenceText}>
+            신뢰도: {analysisResult.confidence}/10
+          </p>
+        )}
       </div>
       
       <button 
         style={styles.primaryButton}
         onClick={handleCorrect}
       >
-        맞췄어요!
+        맞췄어요!!
       </button>
       
       <button 
