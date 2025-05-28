@@ -3,8 +3,9 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 exports.analyzePersonalityFromImages = async (imageDescriptions) => {
   const prompt = `
-다음은 여행 사진에 대한 설명입니다.
-이 설명을 보고 사용자의 성격과 여행 스타일을 분석해주세요.
+이 사람의 성격과 여행 스타일을 감성적으로 분석해줘.
+칭찬은 예쁘게, 단점은 뼈 때리게 말해줘.
+10줄 내외로 작성해줘.
 
 ${imageDescriptions.map((desc, i) => `${i + 1}. ${desc}`).join('\n')}
 
