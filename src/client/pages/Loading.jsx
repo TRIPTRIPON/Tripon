@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Loading.css';
 
 const Loading = () => {
   const navigate = useNavigate();
+  const airplaneRef = useRef(null);
+  const pathRef = useRef(null);
 
   useEffect(() => {
-    // AI 분석이 완료되면 LocationAnalysis 페이지로 이동
     const timer = setTimeout(() => {
       navigate('/analysis');
     }, 3000);
@@ -13,11 +15,55 @@ const Loading = () => {
     return () => clearTimeout(timer);
   }, [navigate]);
 
+  useEffect(() => {
+    const airplane = airplaneRef.current;
+    const path = pathRef.current;
+
+    if (airplane && path) {
+      airplane.animate(
+        [
+          { transform: 'translate(0, 0)' },
+          { transform: 'translate(150px, -30px)' },
+          { transform: 'translate(300px, 10px)' },
+          { transform: 'translate(450px, -20px)' },
+        ],
+        {
+          duration: 3000,
+          fill: 'forwards',
+          easing: 'ease-in-out',
+        }
+      );
+
+      path.animate(
+        [
+          { width: '0' },
+          { width: '450px' },
+        ],
+        {
+          duration: 3000,
+          fill: 'forwards',
+          easing: 'ease-in-out',
+        }
+      );
+    }
+  }, []);
+
   return (
     <div className="loading-container">
-      <div className="loading-spinner"></div>
-      <h2>AI가 장소를 분석중입니다...</h2>
-      <p>잠시만 기다려주세요</p>
+      <div className="airplane-wrapper">
+        <img
+          src="/asset/Airplane_icon.png"
+          alt="airplane"
+          ref={airplaneRef}
+          className="airplane-icon"
+        />
+        <div
+          ref={pathRef}
+          className="airplane-path"
+        ></div>
+      </div>
+      <h2 className="logo-text">TRIP:ON</h2>
+      <div className="loading-text">여행 네컷을 생성중입니다.</div>
     </div>
   );
 };
