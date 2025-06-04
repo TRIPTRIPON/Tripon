@@ -1,4 +1,3 @@
-
 require('dotenv').config(); // 항상 최상단
 const express = require('express');
 const cors = require('cors');
