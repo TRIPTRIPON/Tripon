@@ -23,6 +23,11 @@ const TripOnPage = () => {
       marginBottom: '2rem',
       width: '100%'
     },
+    logo: {
+      width: '150px',
+      height: 'auto',
+      marginBottom: '1rem'
+    },
     titleHighlight: {
       color: '#888',
       fontSize: '1.1rem',
@@ -167,6 +172,8 @@ const TripOnPage = () => {
     const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
     
     console.log('API Key 확인:', apiKey ? '있음' : '없음');
+    console.log('API Key 길이:', apiKey ? apiKey.length : 0);
+    console.log('API Key 앞부분:', apiKey ? apiKey.substring(0, 7) + '...' : '없음');
     
     if (!apiKey) {
       console.error('API Key가 설정되지 않았습니다');
@@ -176,14 +183,14 @@ const TripOnPage = () => {
     try {
       
       const requestBody = {
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: [
           {
             role: "user",
             content: [
               {
                 type: "text",
-                text: "이 여행 사진을 보고 촬영된 국가와 도시를 추론해주세요. 응답은 반드시 다음 JSON 형식으로만 해주세요: {\"country\": \"국가명\", \"city\": \"도시명\", \"confidence\": \"신뢰도(1-10)\"}"
+                text: "이 여행 사진을 보고 촬영된 국가와 도시를 추론하고 한글로 주세요. 응답은 반드시 다음 JSON 형식으로만 해주세요. 마크다운이나 다른 형식은 사용하지 마세요: {\"country\": \"국가명\", \"city\": \"도시명\", \"confidence\": \"신뢰도(1-10)\"}"
               },
               {
                 type: "image_url",
@@ -207,6 +214,9 @@ const TripOnPage = () => {
         body: JSON.stringify(requestBody)
       });
 
+      console.log('API 요청 내용:', requestBody);
+      console.log('API 응답 상태:', response.status);
+      
       if (!response.ok) {
         const errorText = await response.text();
         console.error('API 응답 에러:', {
@@ -365,18 +375,18 @@ const TripOnPage = () => {
       
       <div style={styles.buttonContainer}>
         <button 
-          style={styles.primaryButton} 
+          style={styles.secondaryButton} 
           onClick={handleReset}
           disabled={isAnalyzing}
         >
           다시 선택
         </button>
         <button 
-          style={styles.secondaryButton} 
+          style={styles.primaryButton} 
           onClick={handleConfirm}
           disabled={isAnalyzing || files.length === 0}
         >
-          {isAnalyzing ? '분석 중...' : '확인'}
+          {isAnalyzing ? '분석 중...' : '분석하기'}
         </button>
       </div>
     </div>
