@@ -168,6 +168,26 @@ const TripOnPage = () => {
     });
   };
 
+  const getPresignedUrl = async (filename) => {
+  const response = await fetch(
+    `https://m177rqs76i.execute-api.ap-northeast-2.amazonaws.com/dev/api/presign?filename=${encodeURIComponent(filename)}`
+  );
+  const data = await response.json();
+  return data.url;
+};
+
+const uploadToS3 = async (file) => {
+  const url = await getPresignedUrl(file.name);
+  await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': file.type
+    },
+    body: file
+  });
+  return url.split('?')[0]; // S3 최종 URL 반환
+};
+
   const analyzeImageWithChatGPT = async (base64Image) => {
     const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
     
@@ -267,13 +287,22 @@ const TripOnPage = () => {
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
     fileInput.multiple = false;
-    fileInput.onchange = (e) => {
-      if (e.target.files.length > 0) {
-        setFiles(Array.from(e.target.files));
-        setAnalysisResult(null);
-        setError(null);
-      }
-    };
+    fileInput.onchange = async (e) => {
+  if (e.target.files.length > 0) {
+    const selectedFile = e.target.files[0];
+    setFiles([selectedFile]);
+    setAnalysisResult(null);
+    setError(null);
+
+    try {
+      const uploadedUrl = await uploadToS3(selectedFile);
+      console.log("✅ S3 업로드 완료:", uploadedUrl);
+    } catch (err) {
+      console.error("❌ S3 업로드 실패:", err);
+      setError("이미지 업로드에 실패했습니다");
+    }
+  }
+};
     fileInput.click();
   };
 
