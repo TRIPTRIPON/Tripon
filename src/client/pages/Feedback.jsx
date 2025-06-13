@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ImageCountModal from './modal';
 
 const Feedback = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isCorrect = location.state?.isCorrect;
+  const [showModal, setShowModal] = useState(false);
 
   const handleContinue = () => {
-    navigate('/collage');
+    setShowModal(true);
   };
 
   return (
     <div className="feedback-container">
+      {showModal && <ImageCountModal onClose={() => setShowModal(false)} />}
       <h2>피드백 감사합니다!</h2>
       <p>
         {isCorrect 

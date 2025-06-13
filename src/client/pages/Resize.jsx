@@ -7,7 +7,6 @@ const Resize = () => {
   const [images, setImages] = useState(location.state?.files || []);
 
   const handleResize = () => {
-    // 이미지 리사이징 처리 후 Loading 페이지로 이동
     navigate('/loading');
   };
 
