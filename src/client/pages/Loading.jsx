@@ -9,7 +9,7 @@ const Loading = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/analysis');
+      navigate('/collage');
     }, 3000);
 
     return () => clearTimeout(timer);
