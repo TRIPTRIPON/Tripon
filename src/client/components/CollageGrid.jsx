@@ -2,8 +2,8 @@ import React from 'react';
 import '../styles/CollageGrid.css';
 
 const sampleImages = [
-  '/asset/000.png',
-  '/asset/001.png',
+  '/asset/000.jpg',
+  '/asset/001.jpg',
   '/asset/002.png',
   '/asset/003.png',
 ];
